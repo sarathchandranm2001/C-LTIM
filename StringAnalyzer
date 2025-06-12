@@ -1,0 +1,46 @@
+using System;
+
+public class StringAnalyzer{
+
+    static char[] Vowels =  {'a','e','i','o','u'};
+
+    public static (int vowel, int consonant) CountVowelsAndConsonants(string input){
+
+        int Vvowel = 0, Cconsonant =0;
+
+        foreach(char ch in input.ToLower()){
+
+            if(char.IsLetter(ch)){
+
+                if(Array.Exists(Vowels, v=> v == ch)){
+                Vvowel++ ;
+                }
+                else{
+                Cconsonant++;
+                }
+            }
+        }
+        return(Vvowel, Cconsonant);
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+    string input = "";
+
+    while (string.IsNullOrWhiteSpace(input))
+    {
+        input = Console.ReadLine();
+    }
+        var(vowel,consonant) = StringAnalyzer.CountVowelsAndConsonants(input);
+
+        Console.WriteLine($"Number of vowels: {vowel}");
+        Console.WriteLine($"Number of consonants: {consonant}");
+        
+    }
+
+}
+
+
