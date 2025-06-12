@@ -1,16 +1,31 @@
 using System;
 using System.Collections;
-Console.WriteLine("Hello, World!");
-class Programs{
-    static void Main(string[] args){
 
+class Programs
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Hello, World!");
+        Demo_ArrayList(); // Call the method
     }
-    static void Demo_ArrayList(){
-        //stores index
-        ArrayList obj=new ArrayList();
+
+    static void Demo_ArrayList()
+    {
+        ArrayList obj = new ArrayList();
         obj.Add("America");
         obj.Add("India");
-        obj.Add("Uk");
-        Console.WriteLine(obj.Capacity);
+        obj.Add("UK");
+
+        // Insert an item at index 2
+        obj.Insert(2, "Germany");
+
+        Console.WriteLine("Capacity: " + obj.Capacity);
+        Console.WriteLine("Count: " + obj.Count); // Total number of items
+
+        Console.WriteLine("Contents of ArrayList:");
+        foreach (var item in obj)
+        {
+            Console.WriteLine(item);
+        }
     }
 }
