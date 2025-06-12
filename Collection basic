@@ -1,0 +1,16 @@
+using System;
+using System.Collections;
+Console.WriteLine("Hello, World!");
+class Programs{
+    static void Main(string[] args){
+
+    }
+    static void Demo_ArrayList(){
+        //stores index
+        ArrayList obj=new ArrayList();
+        obj.Add("America");
+        obj.Add("India");
+        obj.Add("Uk");
+        Console.WriteLine(obj.Capacity);
+    }
+}
