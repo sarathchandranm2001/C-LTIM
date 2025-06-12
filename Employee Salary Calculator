@@ -1,0 +1,115 @@
+using System;
+
+public class Employee
+{
+    public double HourlyRate;
+    public double HoursWorked;
+
+    public Employee(double rate, double hours)
+    {
+        HourlyRate = rate;
+        HoursWorked = hours;
+    }
+
+    public virtual double CalculateSalary()
+    {
+        return HourlyRate * HoursWorked;
+    }
+
+    public virtual string GetEmployeeType()
+    {
+        return "Employee";
+    }
+}
+
+public class FullTimeEmployee : Employee
+{
+    public FullTimeEmployee(double rate, double hours) : base(rate, hours) { }
+
+    public override double CalculateSalary()
+    {
+        return HourlyRate * HoursWorked;
+    }
+
+    public override string GetEmployeeType()
+    {
+        return "FullTimeEmployee";
+    }
+}
+
+public class PartTimeEmployee : Employee
+{
+    public PartTimeEmployee(double rate, double hours) : base(rate, hours) { }
+
+    public override double CalculateSalary()
+    {
+        return (HourlyRate * 0.8) * HoursWorked;
+    }
+
+    public override string GetEmployeeType()
+    {
+        return "PartTimeEmployee";
+    }
+}
+
+public class Intern : Employee
+{
+    public Intern(double rate, double hours) : base(rate, hours) { }
+
+    public override double CalculateSalary()
+    {
+        return (HourlyRate * 0.6) * HoursWorked;
+    }
+
+    public override string GetEmployeeType()
+    {
+        return "Intern";
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    { int count=int.Parse(Console.ReadLine());
+        
+
+        if ( count <= 0)
+        {
+            Console.WriteLine("Please enter a valid positive integer.");
+            return;
+        }
+
+        Employee[] employees = new Employee[count];
+
+        for (int i = 0; i < count; i++)
+        {
+            string type = Console.ReadLine().ToLower();
+            double rate = double.Parse(Console.ReadLine()!);
+            double hours = double.Parse(Console.ReadLine()!);
+
+            if (type == "fulltimeemployee")
+            {
+                employees[i] = new FullTimeEmployee(rate, hours);
+            }
+            else if (type == "parttimeemployee")
+            {
+                employees[i] = new PartTimeEmployee(rate, hours);
+            }
+            else if (type == "intern")
+            {
+                employees[i] = new Intern(rate, hours);
+            }
+            else
+            {
+                Console.WriteLine("Unknown employee type.");
+                i--; 
+            }
+        }
+
+        Console.WriteLine("Salaries of the employees:");
+        for (int i = 0; i < count; i++)
+        {
+            Console.WriteLine($"Salary of Employee {i + 1} ({employees[i].GetEmployeeType()}): {employees[i].CalculateSalary()}");
+        }
+    }
+}
