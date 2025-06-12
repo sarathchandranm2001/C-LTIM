@@ -1,0 +1,60 @@
+using System;
+public class Animal{
+        public virtual void MakeSound(){
+            Console.WriteLine("Some generic animal sound");
+
+        }}
+        public class Dog:Animal{
+            public override void MakeSound(){
+            Console.WriteLine("Bark");}
+
+        }
+        public class Cat:Animal{
+            public override void MakeSound(){
+            Console.WriteLine("Meow");
+
+        }
+
+        }
+
+public class Program
+{    
+    public static void Main(string[] args)
+    {
+        int num=int.Parse(Console.ReadLine());
+        if(num>0){
+        string[] inp=new string[num];
+        for(int i=0;i<num;i++){
+            inp[i]=Console.ReadLine();}
+            Console.WriteLine("Sounds of the animals in the array:");
+        for(int i=0;i<num;i++){
+            if(inp[i]=="animal"){
+                Animal a1=new Animal();
+                a1.MakeSound();
+
+            }
+            else if(inp[i]=="dog"){
+                Dog a1=new Dog();
+                a1.MakeSound();
+
+            }
+            else if(inp[i]=="cat"){
+                Cat a1=new Cat();
+                a1.MakeSound();
+
+            }
+            else{
+                Console.WriteLine("Please enter a valid name.");
+            }}
+            
+            }
+        
+        else{
+            Console.WriteLine("Please enter a valid positive integer.");
+            // int num=int.Parse(Console.ReadLine());
+        }}
+        
+
+    }
+
+
